@@ -62,7 +62,7 @@
     (asserts! (is-eq tx-sender CONTRACT_OWNER) ERR_UNAUTHORIZED)
     (map-set maintenance-providers
       { provider: provider }
-      { is-certified: true, certification-date: block-height }
+      { is-certified: true, certification-date: stacks-block-height }
     )
     (ok true)
   )
@@ -86,7 +86,7 @@
         tail-number: tail-number,
         maintenance-type: maintenance-type,
         performed-by: tx-sender,
-        date-performed: block-height,
+        date-performed: stacks-block-height,
         flight-hours-at-service: flight-hours-at-service,
         next-due-hours: next-due-hours,
         cost: cost,
@@ -118,7 +118,7 @@
     (asserts! (is-eq tx-sender (get owner aircraft)) ERR_UNAUTHORIZED)
     (map-set aircraft-registry
       { tail-number: tail-number }
-      (merge aircraft { is-airworthy: is-airworthy, last-inspection: block-height })
+      (merge aircraft { is-airworthy: is-airworthy, last-inspection: stacks-block-height })
     )
     (ok true)
   )
